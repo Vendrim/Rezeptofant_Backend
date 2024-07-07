@@ -1,0 +1,11 @@
+CREATE TABLE IF NOT EXISTS ingredients (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    calories BIGINT UNSIGNED NOT NULL,
+    proteins BIGINT UNSIGNED NOT NULL,
+    fats BIGINT UNSIGNED NOT NULL,
+    carbs BIGINT UNSIGNED NOT NULL,
+    vegetarian BOOLEAN NULL,
+    lactose_tolerant BOOLEAN NULL,
+    vegan BOOLEAN NULL,
+    gluten_free BOOLEAN NULL
+);
