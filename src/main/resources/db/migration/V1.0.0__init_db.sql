@@ -4,6 +4,7 @@ CREATE TABLE IF NOT EXISTS ingredients (
     proteins BIGINT UNSIGNED NOT NULL,
     fats BIGINT UNSIGNED NOT NULL,
     carbs BIGINT UNSIGNED NOT NULL,
+    name VARCHAR(255) NOT NULL,
     vegetarian BOOLEAN NULL,
     lactose_tolerant BOOLEAN NULL,
     vegan BOOLEAN NULL,
