@@ -16,15 +16,12 @@ import java.util.List;
 @RestController
 public class IngredientController {
 
-
     private final IngredientService ingredientService;
 
     @GetMapping("/all")
     public List<Ingredient> all() {
         return ingredientService.findAll();
     }
-
-
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<String> handleException(Exception e) {
