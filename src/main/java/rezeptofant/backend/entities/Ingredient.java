@@ -20,18 +20,6 @@ public class Ingredient {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "calories", nullable = false)
-    private Long calories;
-
-    @Column(name = "proteins", nullable = false)
-    private Long proteins;
-
-    @Column(name = "fats", nullable = false)
-    private Long fats;
-
-    @Column(name = "carbs", nullable = false)
-    private Long carbs;
-
     @Column(name = "name", nullable = false)
     private String name;
 
@@ -47,16 +35,20 @@ public class Ingredient {
     @Column(name = "gluten_free")
     private boolean glutenFree;
 
+    public Ingredient updateValuesFromOtherIngredient(Ingredient ingredient) {
+        setGlutenFree(ingredient.isGlutenFree());
+        setLactoseTolerant(ingredient.isLactoseTolerant());
+        setVegan(ingredient.isVegan());
+        setVegetarian(ingredient.isVegetarian());
+        return this;
+    }
+
 
     @Override
     public String toString() {
         return new ToStringBuilder(ToStringStyle.JSON_STYLE) //
                 .appendSuper(super.toString()) //
                 .append("id", id) //
-                .append("calories", calories) //
-                .append("proteins", proteins) //
-                .append("fats", fats) //
-                .append("carbs", carbs) //
                 .append("vegetarian", vegetarian) //
                 .append("lactoseTolerant", lactoseTolerant) //
                 .append("vegan", vegan) //
