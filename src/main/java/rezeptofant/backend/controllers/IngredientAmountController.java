@@ -20,28 +20,28 @@ public class IngredientAmountController {
         return ingredientAmountService.getAll();
     }
 
-    @GetMapping(Endpoints.INGREDIENTS + Endpoints.GET + "/{id}")
+    @GetMapping(Endpoints.INGREDIENT_AMOUNT + Endpoints.GET + "/{id}")
     public IngredientAmount get(@PathVariable("id") Long id) {
         return ingredientAmountService.findById(id);
     }
 
-    @PostMapping(Endpoints.INGREDIENTS + Endpoints.CREATE)
+    @PostMapping(Endpoints.INGREDIENT_AMOUNT + Endpoints.CREATE)
     public IngredientAmount create(IngredientAmount ingredient) {
         return ingredientAmountService.create(ingredient);
     }
 
-    @PutMapping(Endpoints.INGREDIENTS + Endpoints.UPDATE)
+    @PutMapping(Endpoints.INGREDIENT_AMOUNT + Endpoints.UPDATE)
     public IngredientAmount update(IngredientAmount ingredient) {
-        if(ingredient.getId() == null) {
+        if (ingredient.getId() == null) {
             return null;
         }
 
         return ingredientAmountService.update(ingredient);
     }
 
-    @DeleteMapping(Endpoints.INGREDIENTS + Endpoints.DELETE + "/{id}")
+    @DeleteMapping(Endpoints.INGREDIENT_AMOUNT + Endpoints.DELETE + "/{id}")
     public IngredientAmount delete(@PathVariable("id") Long id) {
-        if(id == null || id < 1 || id == Integer.MAX_VALUE || id == Integer.MIN_VALUE) {
+        if (id == null || id < 1 || id == Integer.MAX_VALUE || id == Integer.MIN_VALUE) {
             return null;
         }
 
