@@ -2,6 +2,10 @@ package rezeptofant.backend.util;
 
 public class Endpoints {
 
+    public static final String MACRO = "/macro";
+    public static final String MICRO = "/micro";
+    public static final String NUTRIENT_EXTRA = "/nutrient_extra";
+
     private Endpoints() {
 
     }
