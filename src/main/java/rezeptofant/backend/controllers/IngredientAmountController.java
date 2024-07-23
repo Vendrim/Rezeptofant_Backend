@@ -1,8 +1,8 @@
 package rezeptofant.backend.controllers;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import rezeptofant.backend.entities.IngredientAmount;
 import rezeptofant.backend.services.IngredientAmountService;
 import rezeptofant.backend.util.Endpoints;
@@ -18,5 +18,38 @@ public class IngredientAmountController {
     @GetMapping(Endpoints.INGREDIENT_AMOUNT + Endpoints.GET_ALL)
     public List<IngredientAmount> getAll() {
         return ingredientAmountService.getAll();
+    }
+
+    @GetMapping(Endpoints.INGREDIENTS + Endpoints.GET + "/{id}")
+    public IngredientAmount get(@PathVariable("id") Long id) {
+        return ingredientAmountService.findById(id);
+    }
+
+    @PostMapping(Endpoints.INGREDIENTS + Endpoints.CREATE)
+    public IngredientAmount create(IngredientAmount ingredient) {
+        return ingredientAmountService.create(ingredient);
+    }
+
+    @PutMapping(Endpoints.INGREDIENTS + Endpoints.UPDATE)
+    public IngredientAmount update(IngredientAmount ingredient) {
+        if(ingredient.getId() == null) {
+            return null;
+        }
+
+        return ingredientAmountService.update(ingredient);
+    }
+
+    @DeleteMapping(Endpoints.INGREDIENTS + Endpoints.DELETE + "/{id}")
+    public IngredientAmount delete(@PathVariable("id") Long id) {
+        if(id == null || id < 1 || id == Integer.MAX_VALUE || id == Integer.MIN_VALUE) {
+            return null;
+        }
+
+        return ingredientAmountService.delete(id);
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<String> handleException(Exception e) {
+        return ResponseEntity.status(500).body("Internal Server Error: " + e.getMessage());
     }
 }
